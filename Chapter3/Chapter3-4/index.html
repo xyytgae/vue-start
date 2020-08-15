@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue-start</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <p>3-4-1 属性に値をバインドする ～v-bind</p>
+      <form>
+        <label for="memo">メモ:</label>
+        <input type="text" id="memo" v-bind="attrs" />
+      </form>
+      <div :text-content.prop="text"></div>
+      <select v-model="attr">
+        <option value="height">高さ</option>
+        <option value="width">幅</option> </select
+      >: <input type="text" size="5" v-model="size" /><br />
+      <img src="https://wings.msn.to/image/wings.jpg" :[attr]="size" />
+      <hr />
+      <p>3-4-2 文字列をHTMLとして埋め込む ～v-html</p>
+      <!-- <p>{{ message }}</p> -->
+      <p v-html="message"></p>
+      <hr />
+      <p>3-4-3 値を一度だけバインドする ～v-once</p>
+      <form>
+        <label for="name">氏名:</label>
+        <input type="text" id="name" v-model="name" />
+      </form>
+      <div v-once>はじめまして、{{ name }}さん。</div>
+      <div>はじめまして、{{ name }}さん。</div>
+      <hr />
+      <p>3-4-4 要素にスタイルプロパティを設定する ～v-bind:style</p>
+      <div :style="{ backgroundColor: 'Aqua', fontSize: '1.5em'}">
+        皆さん、こんにちは！
+      </div>
+
+      <div :style="[ color, size ]">
+        皆さん、こんにちは！
+      </div>
+      <a :style="{ 'tap-highlight-color': 'Aqua' }" :href="url">
+        {{ url }}
+      </a>
+      <hr />
+      <p>3-4-5 要素にスタイルクラスを設定する ～v-bind:class</p>
+      <div class="small" :class="{ color, frame: isChange }">
+        皆さん、こんにちは！
+      </div>
+      <div class="small" :class="[ colorClass, frameClass ]">
+        皆さん、こんにちは！
+      </div>
+      <div class="small" :class="[ colorClass, { frame: isChange } ]">
+        皆さん、こんにちは！
+      </div>
+      <hr />
+      <p>3-4-6 マスタッシュ構文による画面のチラツキを防ぐ ～v-cloak</p>
+      <p v-cloak>{{ text }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

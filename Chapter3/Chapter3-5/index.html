@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue-start</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <p>3-5-1 定型的なイベント処理を宣言的に指定する ～イベント修飾子</p>
+      <hr />
+      <p>3-5-2 イベントの既定の動作をキャンセルする</p>
+      <div id="main" @contextmenu.prevent>
+        この領域では、コンテキストメニューは表示されません。
+      </div>
+      <div id="main" @contextmenu>
+        この領域では、コンテキストメニューは表示されます。
+      </div>
+      <form @submit="onsubmit">
+        <label for="email">メールアドレス:</label>
+        <input id="email" name="email" type="email" />
+        <input type="submit" value="送信" />
+      </form>
+      <hr />
+      <p>3-5-3 一度だけしか実行されないハンドラーを登録する</p>
+      <input type="button" value="結果表示" @click.once="onclick" />
+      <p>今日の運勢は{{ result }}点です。</p>
+      <hr />
+      <p>3-5-4 イベントの伝播を抑制する</p>
+      <div id="parent" @click="onParentClick">
+        親要素
+        <div id="my" @click.self.stop="onMyClick">
+          現在要素
+          <div id="child" @click="onChildClick">
+            子要素
+          </div>
+        </div>
+      </div>
+      <hr />
+      <p>3-5-5 キーイベントでのキーを識別する ～キー修飾子</p>
+      <form>
+        <label for="name">氏名:</label>
+        <input type="text" id="name" @keyup.no-change="clear" v-model="name" />
+      </form>
+      <hr />
+      <p>3-5-6 システムキーとの組み合わせを検知する</p>
+      <form>
+        <label for="name">氏名:</label>
+        <input
+          type="text"
+          id="name"
+          @keyup.alt.81.exact="help"
+          v-model="name"
+        />
+      </form>
+      <hr />
+      <p>3-5-7 マウスの特定のボタンを検知する ～マウス修飾子</p>
+      <div
+        id="main"
+        @click.left="onleftclick"
+        @click.right.prevent="onrightclick"
+      >
+        ボタンの右クリックでコンテキストメニューを表示します。
+      </div>
+      <ul class="cxt" :style="pos" v-show="show">
+        <li><a href="https://wings.msn.to/index.php/-/A-08/">ヘルプ</a></li>
+        <li><a href="https://wings.msn.to/index.php/-/B-14/">質問掲示板</a></li>
+        <li>
+          <a href="https://wings.msn.to/index.php/-/B-11/">よくある質問一覧</a>
+        </li>
+      </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

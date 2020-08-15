@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue-start</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <p>3-3-1 式の真偽に応じて表示と非表示を切り替える ～v-if</p>
+      <form>
+        <label for="show">表示/非表示</label>
+        <input type="checkbox" id="show" v-model="show" />
+      </form>
+
+      <div id="panel" v-if="show">
+        <h3>RSSフィードについて</h3>
+        <div>WINGSでは、弊社執筆の書籍/雑誌/Web記事の…</div>
+      </div>
+      <div v-else>現在、非表示状態です。</div>
+
+      <form>
+        <label for="holiday">祝日:</label><br />
+        <select id="holiday" v-model="holiday">
+          <option value="">祝日を選んでください。</option>
+          <option value="new">元日</option>
+          <option value="child">こどもの日</option>
+          <option value="culture">文化の日</option>
+          <option value="labor">勤労感謝の日</option>
+        </select>
+      </form>
+      <div v-if="holiday==='new'">1月1日。年のはじめを祝う</div>
+      <div v-else-if="holiday==='child'">5月5日。こどもの人格を重んじ…</div>
+      <div v-else-if="holiday==='culture'">11月3日。自由と平和を愛し…</div>
+      <div v-else-if="holiday==='labor'">11月23日。勤労をたつとび…</div>
+      <div v-else>なにも選択されていません。</div>
+      <fieldset>
+        <legend>支払方法</legend>
+        クレジットカード:
+        <input type="radio" name="pay" value="credit" v-model="pay" />
+        銀行振込:
+        <input type="radio" name="pay" value="bank" v-model="pay" />
+        <hr />
+        <div v-if="pay === 'credit'">
+          カード番号:
+          <input type="text" key="credit" />
+        </div>
+        <div v-else-if="pay === 'bank'">
+          口座番号:
+          <input type="text" key="bank" />
+        </div>
+      </fieldset>
+      <hr />
+      <p>3-3-2 式の真偽に応じて表示/非表示を切り替える ～v-show</p>
+      <div id="panel" v-show="show">
+        <h3>RSSフィードについて</h3>
+        <div>WINGSでは、弊社執筆の書籍/雑誌/Web記事の…</div>
+      </div>
+      <hr />
+      <p>3-3-3 配列やオブジェクトを繰り返し処理する ～v-for</p>
+      <table class="table">
+        <th>ISBN</th>
+        <th>書名</th>
+        <th>価格</th>
+        <tr v-for="(b, i) in books">
+          <td>{{ i + 1 }}</td>
+          <td>{{ b.isbn }}</td>
+          <td>{{ b.title }}</td>
+          <td>{{ b.price }}</td>
+        </tr>
+      </table>
+      <ul v-for="(value, key, i) in book">
+        <li>{{ key }} : {{ value }}</li>
+      </ul>
+
+      <span v-for="i in 5">{{ i * 2}}</span>
+      <hr />
+      <p>3-3-4 v-forによるループ処理の注意点</p>
+      <table class="table">
+        <th>ISBN</th>
+        <th>書名</th>
+        <th>価格</th>
+        <tr v-for="b in expensiveBooks">
+          <td>{{ b.isbn }}</td>
+          <td>{{ b.title }}</td>
+          <td>{{ b.price }}</td>
+        </tr>
+      </table>
+      <template v-for="s in songs">
+        <header>{{ s.title }}</header>
+        <div>{{ s.lyrics }}</div>
+        <footer>{{ s.composer }}</footer>
+      </template>
+      <hr />
+      <p>3-3-5</p>
+      <form>
+        <input type="button" value="変更" @click="onclick" />
+      </form>
+      <ul>
+        <li v-for="item in list" :key="item">{{ item }}</li>
+      </ul>
+      <hr />
+      <p>3-3-6 配列要素の追加/削除を効率的に行う</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

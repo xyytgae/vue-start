@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue.js</title>
+    <link rel="stylesheet" href="css/event_mouse2.css" />
+  </head>
+  <body>
+    <div id="app">
+      <p>3-1-1</p>
+      <button v-on:click="onclick">クリック</button>
+      <p>{{ message }}</p>
+      <hr />
+      <p>3-1-2</p>
+      <img
+        v-bind:src="path"
+        alt="ロゴ画像"
+        v-on:mouseover="onmouseenter"
+        v-on:mouseout="onmouseleave"
+      />
+      <hr />
+      <p>補足</p>
+      <div id="outer" v-on:mouseover="onmousein" v-on:mouseout="onmouseout">
+        外(outer)
+        <p id="inner">
+          内(inner)
+        </p>
+      </div>
+      <div v-html="result"></div>
+      <img v-bind:src="path" v-on:error="onerror" />
+      <hr />
+      <p>3-1-3</p>
+      <button @click="onclick">クリック</button>
+      <div id="main" @mousemove="onmousemove">
+        screen: {{ screenX }}/{{ screenY }}<br />
+        page: {{ pageX }}/{{ pageY }}<br />
+        client: {{ clientX }}/{{ clientY }}<br />
+        offset: {{ offsetX }}/{{ offsetY }}<br />
+      </div>
+      <button @click="onclick('ようこそ', $event)">クリック</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="js/event.js"></script>
+  </body>
+</html>

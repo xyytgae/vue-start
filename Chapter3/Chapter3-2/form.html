@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue.js</title>
+    <link rel="stylesheet" href="css/event_mouse2.css" />
+  </head>
+  <body>
+    <div id="app">
+      <p>3-2-1 双方向データバインディング</p>
+      <form>
+        <label for="name">氏名:</label>
+        <input type="text" id="name" v-model="myName" />
+      </form>
+      <div>こんにちは{{ myName }}さん！</div>
+      <hr />
+      <p>3-2-2 ラジオボタン</p>
+      <form>
+        <label for="dog">いぬ</label>
+        <input type="radio" id="dog" value="いぬ" v-model="pet" />
+        <br />
+        <label for="cat">ねこ</label>
+        <input type="radio" id="cat" value="ねこ" v-model="pet" />
+        <br />
+        <label for="other">その他</label>
+        <input type="radio" id="other" value="その他" v-model="pet" />
+      </form>
+      <p>ペット: {{ pet }}</p>
+      <hr />
+      <p>3-2-3 チェックボックス（単一）</p>
+      <form>
+        <label for="agree">同意する:</label>
+        <input
+          type="checkbox"
+          id="agree"
+          v-model="agree"
+          true-value="yes"
+          false-value="no"
+        />
+        <!-- <input type="checkbox" id="agree" v-model="agree" /> -->
+      </form>
+      <div>回答: {{ agree }}</div>
+      <hr />
+      <p>3-2-4 チェックボックス（複数）</p>
+      <form>
+        <div>お使いのOSは？</div>
+        <label for="windows">Windows</label>
+        <input type="checkbox" id="windows" value="Windows" v-model="os" />
+        <label for="linux">Linux</label>
+        <input type="checkbox" id="linux" value="Linux" v-model="os" />
+        <label for="mac">macOS</label>
+        <input type="checkbox" id="mac" value="macOS" v-model="os" />
+      </form>
+      <p>回答: {{ os }}</p>
+      <hr />
+      <p>3-2-5 選択ボックス</p>
+      <form>
+        <label for="os">お使いのOSは？</label><br />
+        <select id="os" v-model="os">
+          <option value="">OSを選択してください</option>
+          <option>Windows</option>
+          <option>Linux</option>
+          <option>macOS</option>
+        </select>
+      </form>
+      <p>回答: {{ os }}</p>
+      <select v-model="os" multiple size="3">
+        <option value="">OSを選択してください</option>
+        <option>Windows</option>
+        <option>Linux</option>
+        <option>macOS</option>
+      </select>
+      <hr />
+      <p>補足：オブジェクトをバインドする</p>
+      <form>
+        <label for="million">百万:</label>
+        <input
+          type="radio"
+          id="million"
+          v-model="unit"
+          v-on:change="onchange"
+          :value="{ name: '百万', size: 1000000 }"
+        /><br />
+        <label for="million">十億:</label>
+        <input
+          type="radio"
+          id="billion"
+          v-model="unit"
+          v-on:change="onchange"
+          :value="{ name: '十億', size: 1000000000 }"
+        /><br />
+        <label for="trillion">一兆:</label>
+        <input
+          type="radio"
+          id="million"
+          v-model="unit"
+          v-on:change="onchange"
+          :value="{ name: '一兆', size: 1000000000 }"
+        />
+      </form>
+      <hr />
+      <p>3-2-6</p>
+      <form>
+        <input ref="upfile" type="file" @change="onchange" />
+      </form>
+      <div>{{ message }}</div>
+      <hr />
+      <p>3-2-7 バインドの動作オプションを設定する</p>
+      <form>
+        <label for="temperature">サウナの温度:</label>
+        <input
+          type="text"
+          id="temperature"
+          v-model.number="temperature"
+          @change="onchange"
+        />
+      </form>
+      <form>
+        <label for="memo">メモ:</label>
+        <input type="text" id="memo" v-model.trim="memo" @change="onchange" />
+      </form>
+      <hr />
+      <p>3-2-8 バインドのタイミングを遅延させる～.lazy修飾子</p>
+      <form>
+        <label for="name">氏名:</label>
+        <input type="text" id="name" v-model.lazy="myName" />
+      </form>
+      <div>こんにちは、{{ myName }}さん！！</div>
+      <hr />
+      <p>3-2-9 双方向データバインドのカスタマイズ</p>
+      <form>
+        <label for="mail">メールアドレス:</label>
+        <textarea
+          id="mail"
+          :value="mails.join(';')"
+          @input="mails=$event.target.value.split(';')"
+        ></textarea>
+      </form>
+      <ul>
+        <li v-for="mail in mails">
+          {{ mail }}
+        </li>
+      </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="js/form.js"></script>
+  </body>
+</html>
