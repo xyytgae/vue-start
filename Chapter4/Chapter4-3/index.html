@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue-start</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <my-hello>鈴木</my-hello>
+      <my-hello></my-hello>
+      <p>4-3-1 スロットのスコープ</p>
+      <p>4-3-2 複数のスロットを利用する</p>
+      <my-slot>
+        <template v-slot:header>
+          <h3>ようこそVue.jsへ</h3>
+        </template>
+
+        <p>一緒に勉強しましょう</p>
+
+        <template v-slot:footer>
+          <span>Written by WINGSプロジェクト</span>
+        </template>
+
+        <p>質問は掲示板へどうぞ。</p>
+      </my-slot>
+      <hr />
+      <p>
+        4-3-3 スロットから子コンポーネントの情報を引用する
+        ～スコープ付きスロット
+      </p>
+      <my-book>
+        <template v-slot:default="slotProp">
+          {{ slotProp.book.title }} ({{ slotProp.book.price }}円)
+        </template>
+      </my-book>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

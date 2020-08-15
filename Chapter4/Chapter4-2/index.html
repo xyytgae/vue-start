@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue-start</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <p>4-2-1 コンポーネントのスコープ</p>
+      <p>4-2-2 親コンポーネント=>子コンポーネントの伝達 ～propsオプション</p>
+      <my-hello your-name="鈴木"></my-hello>
+      <my-counter init="0"></my-counter>
+      <my-hello title="input" my-attr="mytext" class="sub"></my-hello>
+      <p>現在値: {{ current }}</p>
+      <my-counter step="1" @plus="onplus"></my-counter>
+      <my-counter step="2" @plus="onplus"></my-counter>
+      <my-counter step="-1" @plus="onplus"></my-counter>
+      <hr />
+      <p>4-2-5 propsや$emitを利用しない親子間通信</p>
+      <p>親:{{ message }}</p>
+      <my-child ref="child"></my-child>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
