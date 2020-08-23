@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue-start</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <p>5-1-1 動的コンポーネントの基本</p>
+      <component :is="currentBanner"></component>
+      <p>5-1-2 タブパネルを生成する</p>
+      <div id="container">
+        <ul>
+          <li v-for="tab in tabNames">
+            <a href="#" @click.prevent="onclick(tab)">{{ tabs[tab] }}</a>
+          </li>
+        </ul>
+        <keep-alive>
+          <component :is="currentTab"></component>
+        </keep-alive>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

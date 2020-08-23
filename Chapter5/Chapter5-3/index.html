@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue-start</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/2.0.3/velocity.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>5-3-1 アニメーションの基本</p>
+      <input type="button" value="表示/非表示" @click="onclick1" />
+      <!-- <transition
+        enter-active-class="animated rollIn"
+        leave-active-class="animated rollOut"
+      >
+        <div id="panel" v-show="flag">
+          WINGSプロジェクトで一緒に執筆の仕事をしてみませんか？<br />
+          ただいまメンバー募集中！<br />
+          是非、ご応募ください。
+        </div>
+      </transition> -->
+
+      <!-- <transition appear>
+        <div id="panel" v-if="flag" key="p1">
+          WINGSプロジェクトで一緒に執筆の仕事をしてみませんか？<br />
+          ただいまメンバー募集中！<br />
+          是非、ご応募ください。
+        </div>
+        <div id="empty" v-else key="p2">
+          パネルは非表示です。
+        </div>
+      </transition> -->
+
+      <transition :css="false" @enter="onenter" @leave="onleave">
+        <div id="panel" v-show="flag">
+          WINGSプロジェクトで一緒に執筆の仕事をしてみませんか？<br />
+          ただいまメンバー募集中！<br />
+          是非、ご応募ください。
+        </div>
+      </transition>
+
+      <p>5-3-2 キーフレームによるアニメーション制御</p>
+      <hr />
+      <p>5-3-3 アニメーションの制御</p>
+      <input type="button" value="切り替え" @click="onclick2" />
+      <transition>
+        <div class="panel" :key="id">
+          {{ panels[id] }}
+        </div>
+      </transition>
+      <hr />
+      <p>5-3-4 リストトランジション</p>
+      <div id="list">
+        <form>
+          <label for="todo">やること:</label>
+          <input type="text" id="todo" size="40" v-model="todo" /><br />
+          <input type="button" value="追加" @click="onadd" />
+          <input type="button" value="削除" @click="onremove" />
+          <input type="button" value="ソート" @click="onsort" />
+        </form>
+        <transition-group tag="ul">
+          <li v-for="item in items" :key="item">{{ item }}</li>
+        </transition-group>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue-start</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <p>5-4-1 テンプレートの記法</p>
+      <!-- <my-hello></my-hello> -->
+
+      <my-hello inline-template>
+        <p>こんにちは、{{ name }}さん！</p>
+      </my-hello>
+
+      <my-loading type="image"></my-loading>
+      <hr />
+      <p>5-4-2 関数型コンポーネント ～functionalオプション</p>
+      <my-random :min="0" :max="100"></my-random>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <!-- <script type="text/x-template" id="my-hello">
+      <div>こんにちは、{{ name }}！</div>
+    </script> -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

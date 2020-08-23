@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue-start</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <p>5-2-1 コンポーネントでのv-modelの利用例</p>
+      <my-input :value.sync="message"></my-input>
+      <p>入力値: {{ message }}</p>
+      <hr />
+      <p>5-2-2 v-modelの紐付け先を変更する ～modelオプション</p>
+      <hr />
+      <p>5-2-3 複数のプロパティを双方向バインディングする ～.sync修飾子</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
