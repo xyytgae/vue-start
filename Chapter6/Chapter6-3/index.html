@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue-start</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <p>6-3-1 検証プラグインの利用 ～VeeValidate</p>
+      <form>
+        <label for="name">氏名:</label>
+        <input v-validate="'required|max: 10'" id="name" name="name" />
+        <span v-show="errors.has('name')">{{ errors.first('name') }}</span
+        ><br />
+        <label for="age">年齢:</label>
+        <input
+          v-validate="{ numeric:true, between: [20, 60] }"
+          id="age"
+          name="age"
+          type="number"
+        />
+        <span v-show="errors.has('age')">{{ errors.first('age') }}</span><br />
+        <label for="sex">性別:</label>
+        <select v-validate="'included:男,女,その他'" id="sex" name="sex">
+          <option value="男" selected>男性</option>
+          <option value="女">女性</option>
+          <option value="その他">その他</option>
+        </select>
+        <span v-show="errors.has('sex')">{{ errors.first('sex') }}</span><br />
+      </form>
+
+      <form>
+        <label for="memo">メモ：</label>
+        <textarea
+          id="memo"
+          name="memo"
+          rows="10"
+          cols="30"
+          v-validate="'ngword:暴力,グロ,エロ'"
+          data-vv-as="メモ"
+        ></textarea>
+        <span v-show="errors.has('memo')">{{ errors.first('memo') }}</span>
+      </form>
+
+      <hr />
+      <p>6-3-2 典型的なUIを実装する ～Element</p>
+      <el-carousel :interval="5000" arrow="hover">
+        <el-carousel-item>
+          <div>
+            <h3>WINGSプロジェクト</h3>
+            <p>ようこそ！WINGSプロジェクトへ</p>
+            <img src="https://wings.msn.to/image/wings.jpg" />
+          </div>
+        </el-carousel-item>
+        <el-carousel-item>
+          <div>
+            <h3>メンバー募集中！</h3>
+            一緒に執筆のお仕事をしてみませんか？<br />
+            現在、WINGSでは執筆メンバーを募集しています。
+          </div>
+        </el-carousel-item>
+        <el-carousel-item>
+          <div>
+            <h3>What's New</h3>
+            WINGSの最新情報です。<br />
+            RSSでも配信しています。是非ご覧ください。<br />
+            <a href="https://wings.msn.to/index.php/-/A-02/">最新情報一覧</a>
+          </div>
+        </el-carousel-item>
+      </el-carousel>
+
+      <hr />
+      <p>6-3-2 プラグインの自作</p>
+      <div :title="str | trim">str: 「{{ str | trim }}」</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vee-validate@2.2.15/dist/vee-validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vee-validate@2.2.15/dist/locale/ja.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

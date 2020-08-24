@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue-start</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <p>6-1-1 ディレクティブの基本</p>
+      <!-- WINGSプロジェクトで一緒に執筆の仕事をしてみませんか？<span
+        v-highlight="color"
+      >
+        メンバー募集中！</span
+      >是非、ご応募ください。 -->
+      <hr />
+      <p>6-1-2 属性値の変化を検出する</p>
+      <!-- <label>名前:<input type="text" v-model="name" /></label><br />
+      <select v-model="color">
+        <option value="yellow">黄色</option>
+        <option value="red">赤色</option>
+        <option value="blue">青色</option>
+      </select>
+      <p>
+        WINGSプロジェクトで一緒に執筆の仕事をしてみませんか？<span
+          v-highlight="color"
+        >
+          メンバー募集中！</span
+        >是非、ご応募ください。
+      </p> -->
+      <hr />
+      <p>6-1-3 修飾子付きのディレクティブを定義する</p>
+      <!-- <label>名前:<input type="text" v-model="name" /></label><br />
+      <select v-model="color">
+        <option value="yellow">黄色</option>
+        <option value="red">赤色</option>
+        <option value="blue">青色</option>
+      </select>
+      <p>
+        WINGSプロジェクトで一緒に執筆の仕事をしてみませんか？<span
+          v-highlight.border.once="color"
+        >
+          メンバー募集中！</span
+        >是非、ご応募ください。
+      </p> -->
+      <hr />
+      <p>6-1-4 引数付きのディレクティブを定義する</p>
+      <!-- <p>
+        WINGSプロジェクトで一緒に執筆の仕事をしてみませんか？<span
+          v-highlight:border="color"
+        >
+          メンバー募集中！</span
+        >是非、ご応募ください。
+      </p> -->
+      <hr />
+      <p>6-1-5 イベント処理を伴うディレクティブ</p>
+      <!-- <p>
+        WINGSプロジェクトで一緒に執筆の仕事をしてみませんか？<span
+          v-highlight="color"
+        >
+          メンバー募集中！</span
+        >是非、ご応募ください。
+      </p> -->
+      <hr />
+      <p>6-1-6 markedライブラリをラップする</p>
+      <div id="editor" v-markdown="options">
+        ### WINGSプロジェクト
+
+        ただいま**メンバー募集中**です。
+        既存メンバーは、SE、~医師~、主婦など様々です。
+        主なお仕事は以下の通り。
+
+        + 書籍の執筆
+        + 雑誌記事の執筆
+        + Web記事の執筆
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
